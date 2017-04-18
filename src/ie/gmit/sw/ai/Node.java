@@ -1,4 +1,4 @@
-package ie.gmit.sw.ai.maze;
+package ie.gmit.sw.ai;
 
 //Taken from ai-maze-algos
 
@@ -13,18 +13,36 @@ public class Node {
 	private int row = -1;
 	private int col = -1;
 	private int distance;
+	private int id = -1;
 	
-	public Node(int row, int col) {
+	public Node(int row, int col, int id) {
 		this.row = row;
 		this.col = col;
+		this.id = id;
 	}
+	
+	public int getId() {
+		return id;
+	}
+	
+    public void setId(int id) {
+        this.id = id;
+    }
 
 	public int getRow() {
 		return row;
 	}
+	
+    public void setRow(int row) {
+		this.row = row;
+	}
 
 	public int getCol() {
 		return col;
+	}
+	
+	public void setCol(int col) {
+		this.col = col;
 	}
 
 	public Node getParent() {
