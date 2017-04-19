@@ -2,9 +2,11 @@ package ie.gmit.sw.ai;
 
 
 public class Maze {
-	private char[][] maze;
+	//private char[][] maze;
+	private Node[][] maze;
 	public Maze(int dimension){
-		maze = new char[dimension][dimension];
+		//maze = new char[dimension][dimension];
+		maze = new Node[dimension][dimension];
 		init();
 		buildMaze();
 		
@@ -28,19 +30,25 @@ public class Maze {
 	private void init(){
 		for (int row = 0; row < maze.length; row++){
 			for (int col = 0; col < maze[row].length; col++){
-				maze[row][col] = '0'; //Index 0 is a hedge...
+				//maze[row][col] = '0'; //Index 0 is a hedge...
+				maze[row][col] = new Node(row, col, 0); //Index 0 is a hedge...
+				
 			}
 		}
 	}
 	
-	private void addFeature(char feature, char replace, int number){
+	//private void addFeature(char feature, char replace, int number){
+	private void addFeature(int feature, int replace, int number){
 		int counter = 0;
-		while (counter < feature){
+		//while (counter < feature){
+		while (counter < number){
 			int row = (int) (maze.length * Math.random());
 			int col = (int) (maze[0].length * Math.random());
 			
-			if (maze[row][col] == replace){
-				maze[row][col] = feature;
+			//if (maze[row][col] == replace){
+			//	maze[row][col] = feature;
+			if (maze[row][col].getId() == replace){
+				maze[row][col].setId(feature); //= feature;
 				counter++;
 			}
 		}
