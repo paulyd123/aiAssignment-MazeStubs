@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 public class GameView extends JPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
-	public static final int DEFAULT_VIEW_SIZE = 800;	
+	public static final int DEFAULT_VIEW_SIZE = 800;
 	private int cellspan = 5;	
 	private int cellpadding = 2;
 	private Maze maze;
@@ -16,8 +16,8 @@ public class GameView extends JPanel implements ActionListener{
 	private int currentCol;
 	private boolean zoomOut = false;
 	private int imageIndex = -1;
-	private int offset = 48; //The number 0 is ASCII 48.
-	private Color[] reds = {new Color(255,160,122), new Color(139,0,0), new Color(255, 0, 0)}; //Animate enemy "dots" to make them easier to see
+	private int offset = 48; 
+	private Color[] reds = {new Color(255,160,122), new Color(139,0,0), new Color(255, 0, 0)}; 
 	
 	public GameView(Maze maze) throws Exception{
 		this.maze = maze;
@@ -64,8 +64,6 @@ public class GameView extends JPanel implements ActionListener{
         		int id = 0;
        		
         		if (zoomOut){
-        			//ch = maze.get(row, col);
-        			//if (ch >= '5'){
         			id = maze.get(row, col).getId();
         			if (id >= 5){
 	        			if (row == currentRow && col == currentCol){
@@ -76,12 +74,11 @@ public class GameView extends JPanel implements ActionListener{
         				g2.fillRect(x1, y1, size, size);
         			}
         		}else{
-        			//id = maze.get(currentRow - cellpadding + row, currentCol - cellpadding + col);
         			id = maze.get(currentRow - cellpadding + row, currentCol - cellpadding + col).getId();
         		}
         		
         		imageIndex = id;
-        		
+
         		if (imageIndex < 0){
         			g2.setColor(Color.LIGHT_GRAY);//Empty cell
         			g2.fillRect(x1, y1, size, size);   			

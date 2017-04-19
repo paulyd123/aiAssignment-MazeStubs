@@ -1,9 +1,14 @@
 package ie.gmit.sw.ai;
 
-//Taken from ai-maze-algos
-
 import java.awt.Color;
+
+/*
+Taken from Moodle... Class
+ */
+
 public class Node {
+
+    private int id = -1;
 	public enum Direction {North, South, East, West};
 	private Node parent;
 	private Color color = Color.BLACK;
@@ -13,18 +18,17 @@ public class Node {
 	private int row = -1;
 	private int col = -1;
 	private int distance;
-	private int id = -1;
 	
 	public Node(int row, int col, int id) {
 		this.row = row;
 		this.col = col;
 		this.id = id;
 	}
-	
-	public int getId() {
-		return id;
-	}
-	
+
+    public int getId() {
+        return id;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -32,15 +36,15 @@ public class Node {
 	public int getRow() {
 		return row;
 	}
-	
+
     public void setRow(int row) {
 		this.row = row;
 	}
-
+    
 	public int getCol() {
 		return col;
 	}
-	
+
 	public void setCol(int col) {
 		this.col = col;
 	}
@@ -82,11 +86,23 @@ public class Node {
 
 	public Node[] adjacentNodes(Node[][] maze){
 		java.util.List<Node> adjacents = new java.util.ArrayList<Node>();
-		
-		if (row > 0) adjacents.add(maze[row - 1][col]); //Add North
-		if (row < maze.length - 1) adjacents.add(maze[row + 1][col]); //Add South
-		if (col > 0) adjacents.add(maze[row][col - 1]); //Add West
-		if (col < maze[row].length - 1) adjacents.add(maze[row][col + 1]); //Add East
+
+		if (row > 0) {
+			if(maze[row - 1][col].getId() != 0) // only add if not a hedge
+				adjacents.add(maze[row - 1][col]); //Add North
+		}
+		if (row < maze.length - 1) {
+			if(maze[row + 1][col].getId() != 0) // only add if not a hedge
+				adjacents.add(maze[row + 1][col]); //Add South
+		}
+		if (col > 0) {
+			if(maze[row][col - 1].getId() != 0) // only add if not a hedge
+				adjacents.add(maze[row][col - 1]); //Add West
+		}
+		if (col < maze[row].length - 1) {
+			if(maze[row][col + 1].getId() != 0) // only add if not a hedge
+				adjacents.add(maze[row][col + 1]); //Add East
+		}
 		
 		return (Node[]) adjacents.toArray(new Node[adjacents.size()]);
 	}
