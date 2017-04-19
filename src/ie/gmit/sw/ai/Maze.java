@@ -15,7 +15,7 @@ public class Maze {
 		//addFeature('\u0032', '0', featureNumber); //2 is help, 0 is a hedge
 		//addFeature('\u0033', '0', featureNumber); //3 is a bomb, 0 is a hedge
 		//addFeature('\u0034', '0', featureNumber); //4 is a hydrogen bomb, 0 is a hedge
-		int featureNumber = 5;
+		int featureNumber = 20;
 		addFeature(1, 0, featureNumber); //1 is a sword, 0 is a hedge
 		addFeature(2, 0, featureNumber); //2 is help, 0 is a hedge
 		addFeature(3, 0, featureNumber); //3 is a bomb, 0 is a hedge
@@ -31,7 +31,7 @@ public class Maze {
 		//addFeature('\u003C', '0', featureNumber); //< is a Red Spider, 0 is a hedge
 		//addFeature('\u003D', '0', featureNumber); //= is a Yellow Spider, 0 is a hedge
 		
-		featureNumber = 20;
+		featureNumber = 30;
 		addFeature(6, 1, featureNumber); //6 is a Black Spider, 0 is a hedge
 		addFeature(7, 1, featureNumber); //7 is a Blue Spider, 0 is a hedge
 		addFeature(8, 1, featureNumber); //8 is a Brown Spider, 0 is a hedge
