@@ -1,5 +1,6 @@
 package ie.gmit.sw.ai;
 
+import ie.gmit.sw.ai.Node;
 
 public class Maze {
 	//private char[][] maze;
@@ -21,25 +22,15 @@ public class Maze {
 		addFeature(3, 0, featureNumber); //3 is a bomb, 0 is a hedge
 		addFeature(4, 0, featureNumber); //4 is a hydrogen bomb, 0 is a hedge
 		
-		//featureNumber = (int)((dimension * dimension) * 0.01);
-		//addFeature('\u0036', '0', featureNumber); //6 is a Black Spider, 0 is a hedge
-		//addFeature('\u0037', '0', featureNumber); //7 is a Blue Spider, 0 is a hedge
-		//addFeature('\u0038', '0', featureNumber); //8 is a Brown Spider, 0 is a hedge
-		//addFeature('\u0039', '0', featureNumber); //9 is a Green Spider, 0 is a hedge
-		//addFeature('\u003A', '0', featureNumber); //: is a Grey Spider, 0 is a hedge
-		//addFeature('\u003B', '0', featureNumber); //; is a Orange Spider, 0 is a hedge
-		//addFeature('\u003C', '0', featureNumber); //< is a Red Spider, 0 is a hedge
-		//addFeature('\u003D', '0', featureNumber); //= is a Yellow Spider, 0 is a hedge
-		
 		featureNumber = 30;
-		addFeature(6, 1, featureNumber); //6 is a Black Spider, 0 is a hedge
-		addFeature(7, 1, featureNumber); //7 is a Blue Spider, 0 is a hedge
-		addFeature(8, 1, featureNumber); //8 is a Brown Spider, 0 is a hedge
-		addFeature(9, 1, featureNumber); //9 is a Green Spider, 0 is a hedge
-		addFeature(10, 1, featureNumber); //: is a Grey Spider, 0 is a hedge
-		addFeature(11, 1, featureNumber); //; is a Orange Spider, 0 is a hedge
-		addFeature(12, 1, featureNumber); //< is a Red Spider, 0 is a hedge
-		addFeature(13, 1, featureNumber); //= is a Yellow Spider, 0 is a hedge
+		addFeature(6, -1, featureNumber); //6 is a Black Spider, 0 is a hedge
+		addFeature(7, -1, featureNumber); //7 is a Blue Spider, 0 is a hedge
+		addFeature(8, -1, featureNumber); //8 is a Brown Spider, 0 is a hedge
+		addFeature(9, -1, featureNumber); //9 is a Green Spider, 0 is a hedge
+		addFeature(10, -1, featureNumber); //10 is a Grey Spider, 0 is a hedge
+		addFeature(11, -1, featureNumber); //11 is a Orange Spider, 0 is a hedge
+		addFeature(12, -1, featureNumber); //12 is a Red Spider, 0 is a hedge
+		addFeature(13, -1, featureNumber); //13 is a Yellow Spider, 0 is a hedge
 	}
 	
 	private void init(){
@@ -75,10 +66,10 @@ public class Maze {
 				int num = (int) (Math.random() * 10);
 				if (num > 5 && col + 1 < maze[row].length - 1){
 					//maze[row][col + 1] = '\u0020'; //\u0020 = 0x20 = 32 (base 10) = SPACE
-					maze[row][col + 1].setId(1);
+					maze[row][col + 1].setId(-1);
 				}else{
 					//if (row + 1 < maze.length - 1)maze[row + 1][col] = '\u0020';
-					if (row + 1 < maze.length - 1)maze[row + 1][col].setId(1);
+					if (row + 1 < maze.length - 1)maze[row + 1][col].setId(-1);
 				}
 			}
 		}		

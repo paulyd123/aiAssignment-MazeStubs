@@ -67,7 +67,7 @@ public class GameView extends JPanel implements ActionListener{
         			//ch = maze.get(row, col);
         			//if (ch >= '5'){
         			id = maze.get(row, col).getId();
-        			if (id >= '5'){
+        			if (id >= 5){
 	        			if (row == currentRow && col == currentCol){
 	        				g2.setColor(Color.YELLOW);
 	        			}else{
@@ -80,8 +80,7 @@ public class GameView extends JPanel implements ActionListener{
         			id = maze.get(currentRow - cellpadding + row, currentCol - cellpadding + col).getId();
         		}
         		
-        		imageIndex = (int) id;
-        		imageIndex -= offset;
+        		imageIndex = id;
         		
         		if (imageIndex < 0){
         			g2.setColor(Color.LIGHT_GRAY);//Empty cell
