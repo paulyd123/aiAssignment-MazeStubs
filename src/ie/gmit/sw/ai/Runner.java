@@ -1,4 +1,4 @@
-package ie.gmit.sw.ai;
+/*package ie.gmit.sw.ai;
 
 import net.sourceforge.jFuzzyLogic.FIS;
 import net.sourceforge.jFuzzyLogic.FunctionBlock;
@@ -25,4 +25,4 @@ public class Runner {
         JFuzzyChart.get().chart(risk, true);
 	}
 
-}
+}*/
