@@ -1,4 +1,4 @@
-package ie.gmit.sw.ai;
+package ie.gmit.sw.ai.maze;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -28,7 +28,8 @@ public class MoveSpider extends Node {
             while (true) {
             	
                 try {               
-                    Thread.sleep(spiderspeed);   
+                    Thread.sleep(spiderspeed); 
+                    
                     //Moves spider
                     move();
 

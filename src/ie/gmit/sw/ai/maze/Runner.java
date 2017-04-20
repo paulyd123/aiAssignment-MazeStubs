@@ -1,3 +1,4 @@
+package ie.gmit.sw.ai.maze;
 /*package ie.gmit.sw.ai;
 
 import net.sourceforge.jFuzzyLogic.FIS;

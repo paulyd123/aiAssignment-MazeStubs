@@ -1,12 +1,6 @@
 package ie.gmit.sw.ai.traversers;
 
-import ie.gmit.sw.ai.Node;
-
-//Taken from ai-maze-algos
-
-
+import ie.gmit.sw.ai.maze.*;
 public interface Traversator {
-	public void traverser(Node[][] maze, Node start);
-	public Node getNextNode();
-
+	public void traverse(Node[][] maze, Node start);
 }

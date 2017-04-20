@@ -1,4 +1,4 @@
-package ie.gmit.sw.ai;
+package ie.gmit.sw.ai.maze;
 
 public class Maze {
 
@@ -94,4 +94,6 @@ public class Maze {
 		}
 		return sb.toString();
 	}
+
+
 }
