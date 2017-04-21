@@ -4,20 +4,18 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-import ie.gmit.sw.ai.traversers.AStarTraversator;
 import ie.gmit.sw.ai.traversers.DepthLimitedDFSTraversator;
 
 public class SpiderSprite extends Sprite implements Runnable{
 	private PlayerNode p1;
 	private Node[][] maze;
-	private int row;
+	private int row; 
 	private int col;
 	private double strength;
 	private int id;
 	
 	public SpiderSprite(String name, String... images) throws Exception{
 		super(name, images);
-		
 	}
 	
 	public SpiderSprite(Node[][] maze, PlayerNode p1, int row, int col, double strength, int id){

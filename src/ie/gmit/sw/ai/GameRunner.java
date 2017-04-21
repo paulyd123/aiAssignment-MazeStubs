@@ -97,7 +97,7 @@ public class GameRunner implements KeyListener{
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0032')){
 			model.getMaze()[row][col].setNodeType('0');
-			p1.setHealth(p1.getHealth()+25);
+			//p1.setHealth(p1.getHealth()+30);
 			return false;
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0033')){
@@ -119,12 +119,12 @@ public class GameRunner implements KeyListener{
 				model.set(currentRow, currentCol, '\u0020');
 				model.set(row, col, '0');
 			}
-			else{
-				System.exit(1);
+			else {
+				System.exit(0);
 			}
 			return false;
 		}
-		else{
+		else {
 			return false; //Can't move
 		}
 	}
