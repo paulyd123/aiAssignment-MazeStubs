@@ -1,25 +1,19 @@
-package ie.gmit.sw.traversers;
+package ie.gmit.sw.ai.traversers;
 
 import ie.gmit.sw.ai.*;
-public class DepthLimitedDFSTraversator implements Traversator{
+public class RecursiveDFSTraversator implements Traversator{
 	private Node[][] maze;
-	private int limit;
 	private boolean keepRunning = true;
 	private long time = System.currentTimeMillis();
 	private int visitCount = 0;
 	
-	public DepthLimitedDFSTraversator(int limit){
-		this.limit = limit;
-	}
-	
 	public void traverse(Node[][] maze, Node node) {
 		this.maze = maze;
-		System.out.println("Search with limit " + limit);
-		dfs(node, 1);
+		dfs(node);
 	}
 	
-	private void dfs(Node node, int depth){
-		if (!keepRunning || depth > limit) return;
+	private void dfs(Node node){
+		if (!keepRunning) return;
 		
 		node.setVisited(true);	
 		visitCount++;
@@ -32,7 +26,7 @@ public class DepthLimitedDFSTraversator implements Traversator{
 		}
 		
 		try { //Simulate processing each expanded node
-			Thread.sleep(50);
+			Thread.sleep(1);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -41,7 +35,7 @@ public class DepthLimitedDFSTraversator implements Traversator{
 		for (int i = 0; i < children.length; i++) {
 			if (children[i] != null && !children[i].isVisited()){
 				children[i].setParent(node);
-				dfs(children[i], depth + 1);
+				dfs(children[i]);
 			}
 		}
 	}

@@ -1,26 +1,36 @@
 package ie.gmit.sw.ai;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import ie.gmit.sw.ai.SpiderSprite;
+
 
 public class Maze {
-	
-	
 	private Node[][] maze;
-	private Player p1;
+	private PlayerNode p1;
+	private List<SpiderSprite> sprites = new ArrayList<>();	
 	
-	public Maze(int dimension, Player p1){
-		
+	private ExecutorService ex = Executors.newFixedThreadPool(100);
+	
+	
+	public Maze(int dimension, PlayerNode player){
 		maze = new Node[dimension][dimension];
+		
+		this.p1 = player;
+		
 		init();
 		buildMaze();
-		this.p1 = p1;
 		
-		int featureNumber = (int)((dimension * dimension) * 0.01);
+		int featureNumber = 20;
 		addFeature('\u0031', '0', featureNumber); //1 is a sword, 0 is a hedge
 		addFeature('\u0032', '0', featureNumber); //2 is help, 0 is a hedge
 		addFeature('\u0033', '0', featureNumber); //3 is a bomb, 0 is a hedge
 		addFeature('\u0034', '0', featureNumber); //4 is a hydrogen bomb, 0 is a hedge
 		
-		featureNumber = (int)((dimension * dimension) * 0.01);
+		featureNumber = 30;
 		addFeature('\u0036', '0', featureNumber); //6 is a Black Spider, 0 is a hedge
 
 	}
@@ -28,9 +38,9 @@ public class Maze {
 	private void init(){
 		for (int row = 0; row < maze.length; row++){
 			for (int col = 0; col < maze[row].length; col++){
-				//maze[row][col] = '0'; //Index 0 is a hedge...
 				maze[row][col] = new Node(row, col);
 				maze[row][col].setNodeType('0');
+				p1 = getPlayer();
 			}
 		}
 	}
@@ -45,18 +55,25 @@ public class Maze {
 				maze[row][col].setNodeType(feature);
 				if(maze[row][col].getNodeType() == feature){
 					maze[row][col].setNodeType(feature);
+
+					if(number > 0){
+						SpiderSprite sprite = new SpiderSprite(maze, p1, row, col, 30, counter);
+						sprites.add(sprite);
+						ex.execute(sprite);
+					}
 				}
 				counter++;
 			}
 		}
 	}
 	
+	
 	private void buildMaze(){ 
 		for (int row = 1; row < maze.length - 1; row++){
 			for (int col = 1; col < maze[row].length - 1; col++){
 				int num = (int) (Math.random() * 10);
 				if (num > 5 && col + 1 < maze[row].length - 1){
-					maze[row][col + 1].setNodeType('\u0020'); //\u0020 = 0x20 = 32 (base 10) = SPACE
+					maze[row][col + 1].setNodeType('\u0020'); 
 				}else{
 					if (row + 1 < maze.length - 1)maze[row + 1][col].setNodeType('\u0020');
 				}
@@ -76,6 +93,14 @@ public class Maze {
 		this.maze[row][col].setNodeType(c);
 	}
 	
+	public void setPlayer(PlayerNode p1){
+		this.p1 = p1;
+	}
+	
+	public PlayerNode getPlayer(){
+		return this.p1;
+	}
+	
 	public int size(){
 		return this.maze.length;
 	}
@@ -91,9 +116,13 @@ public class Maze {
 		}
 		return sb.toString();
 	}
-
-	public char getNodeType() {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public SpiderSprite getSpriteId(int row, int col){
+		for(SpiderSprite s : sprites ){
+			if (maze[row][col].getRow() == row && maze[row][col].getCol() == col){
+				return s;
+			}
+		}
+		return null;
 	}
 }

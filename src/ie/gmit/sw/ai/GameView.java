@@ -3,8 +3,9 @@ package ie.gmit.sw.ai;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+
 public class GameView extends JPanel implements ActionListener{
-	
 	private static final long serialVersionUID = 1L;
 	public static final int DEFAULT_VIEW_SIZE = 800;	
 	private int cellspan = 5;	
@@ -61,11 +62,11 @@ public class GameView extends JPanel implements ActionListener{
         		int x1 = col * size;
         		int y1 = row * size;
         		
-        		char ch = '0';
+        		char ch = '0'; // hedge
        		
         		if (zoomOut){
         			ch = maze.get(row, col).getNodeType();
-        			if (ch >= '5'){
+        			if (ch >= '5'){ // hedge type object e.g sword, hedge, bomb
 	        			if (row == currentRow && col == currentCol){
 	        				g2.setColor(Color.YELLOW);
 	        			}else{

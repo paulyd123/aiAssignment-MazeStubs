@@ -1,4 +1,4 @@
-package ie.gmit.sw.traversers;
+package ie.gmit.sw.ai.traversers;
 
 import java.awt.Color;
 import ie.gmit.sw.ai.*;

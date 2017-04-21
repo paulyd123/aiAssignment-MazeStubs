@@ -3,11 +3,16 @@ package ie.gmit.sw.ai;
 import javax.imageio.*;
 import java.awt.image.*;
 
-public class Sprite {
+public abstract class Sprite {
 	private String name; //The name of this sprite
 	private BufferedImage[] frames; //The set of image frames to animate
  	private int index = 0; //Initial starting index in array
- 	
+ 	private int row;
+ 	private int col;
+ 
+ 	public Sprite(){
+ 		
+ 	}
 	public Sprite(String name, String... images) throws Exception{
 		this.name = name;
 		this.index = 0; //Initialise the starting index to zero
@@ -18,6 +23,7 @@ public class Sprite {
 		}
 	}
 	
+	// implement moving to next tile in this method
 	public BufferedImage getNext(){ //Returns the next image frame
 		int idx = index;
 		if (index < frames.length - 1){
@@ -31,4 +37,42 @@ public class Sprite {
 	public String getName(){
 		return this.name;
 	}
+	
+	public void setRow(int row){
+		this.row = row;
+	}
+	public int getRow(){
+		return this.row;
+	}
+	public void setCol(int col){
+		this.col = col;
+	}
+	public int getCol(){
+		return this.col;
+	}
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	// template code here
+//	private double lifeForce = 500;
+//	public double engage(double weapon, double anger){
+//		NeuralNetwork nn = NeuralNetworkFactory.getInstance().getNetwork("engage");
+//		double[] inputs = {weapon, anger};
+//		double result = nn.process(inputs);
+//		lifeforce += result;
+//		
+//		FIS fis = FuzzyLogicFactory.getInstance().getFIS("engage");
+//		double result = fis.evaluate(weapon, anger);
+//		lifeforce += result;
+//	}
+	
+//	public boolean isAlive(){
+//		return lifeForce > 0;
+//	}
+

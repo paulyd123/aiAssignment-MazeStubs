@@ -1,4 +1,4 @@
-package ie.gmit.sw.traversers;
+package ie.gmit.sw.ai.traversers;
 
 //import ie.gmit.sw.ai.audio.SoundEffects;
 import ie.gmit.sw.ai.*;
@@ -9,7 +9,7 @@ public class BruteForceTraversator implements Traversator{
 	
 	public BruteForceTraversator(boolean depthFirst){
 		this.dfs = depthFirst;
-//		SoundEffects.init();
+		//SoundEffects.init();
 	}
 	
 	public void traverse(Node[][] maze, Node node) {

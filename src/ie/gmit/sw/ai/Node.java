@@ -1,9 +1,8 @@
 package ie.gmit.sw.ai;
 
 import java.awt.Color;
-
+import java.util.Iterator;
 public class Node {
-	
 	public enum Direction {North, South, East, West};
 	private Node parent;
 	private Color color = Color.BLACK;
@@ -13,6 +12,7 @@ public class Node {
 	private int row = -1;
 	private int col = -1;
 	private int distance;
+	
 	public char nodeType;
 	
 	public Node(int row, int col) {
@@ -82,9 +82,7 @@ public class Node {
 		if (row < maze.length - 1) adjacents.add(maze[row + 1][col]); //Add South
 		if (col > 0) adjacents.add(maze[row][col - 1]); //Add West
 		if (col < maze[row].length - 1) adjacents.add(maze[row][col + 1]); //Add East
-		/*for(Node n : adjacents){
-			System.out.println(n);
-		}*/
+
 		return (Node[]) adjacents.toArray(new Node[adjacents.size()]);
 	}
 	
@@ -150,7 +148,4 @@ public class Node {
 	public void setNodeType(char nodeType){
 		this.nodeType = nodeType;
 	}
-	
-	
-
 }

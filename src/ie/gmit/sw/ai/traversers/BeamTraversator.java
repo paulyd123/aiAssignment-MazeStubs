@@ -1,12 +1,14 @@
-package ie.gmit.sw.traversers;
+package ie.gmit.sw.ai.traversers;
 
 import ie.gmit.sw.ai.*;
 import java.util.*;
-public class BestFirstTraversator implements Traversator{
+public class BeamTraversator implements Traversator{
 	private Node goal;
+	private int beamWidth= 1; 
 	
-	public BestFirstTraversator(Node goal){
+	public BeamTraversator(Node goal,  int beamWidth){
 		this.goal = goal;
+		this.beamWidth = beamWidth;
 	}
 	
 	public void traverse(Node[][] maze, Node node) {
@@ -34,15 +36,21 @@ public class BestFirstTraversator implements Traversator{
 			}
 			
 			Node[] children = node.children(maze);
-			for (int i = 0; i < children.length; i++) {
+			Collections.sort(Arrays.asList(children),(Node current, Node next) -> current.getHeuristic(goal) - next.getHeuristic(goal));
+			
+			int bound = 0;
+			if (children.length < beamWidth){
+				bound = children.length;
+			}else{
+				bound = beamWidth;
+			}
+			
+			for (int i = 0; i < bound; i++) {
 				if (children[i] != null && !children[i].isVisited()){
 					children[i].setParent(node);
 					queue.addFirst(children[i]);
 				}
 			}
-			
-			//Sort the whole queue. Effectively a priority queue, first in, best out
-			Collections.sort(queue,(Node current, Node next) -> current.getHeuristic(goal) - next.getHeuristic(goal));		
 		}
 	}
 }
