@@ -6,8 +6,12 @@ import javax.imageio.ImageIO;
 
 public class PlayerSprite extends Sprite {
 	
+		
+		
 	public PlayerSprite(String name, String... images) throws Exception{
 		super(name, images);
 		
 	}
-}
+	
+	
+	}
