@@ -12,6 +12,7 @@ public class Maze {
 		maze = new Node[dimension][dimension];
 		init();
 		buildMaze();
+		this.p1 = p1;
 		
 		int featureNumber = (int)((dimension * dimension) * 0.01);
 		addFeature('\u0031', '0', featureNumber); //1 is a sword, 0 is a hedge

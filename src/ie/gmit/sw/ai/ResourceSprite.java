@@ -4,10 +4,12 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-public class PlayerSprite extends Sprite {
-	
-	public PlayerSprite(String name, String... images) throws Exception{
+public class ResourceSprite extends Sprite{
+
+	public ResourceSprite(String name, String... images) throws Exception{
 		super(name, images);
 		
+		
 	}
+
 }
