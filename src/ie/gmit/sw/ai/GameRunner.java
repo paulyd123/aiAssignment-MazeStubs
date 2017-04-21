@@ -79,23 +79,20 @@ public class GameRunner implements KeyListener{
 	private boolean isValidMove(int row, int col){
 		if (row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0020'){
 			model.set(currentRow, currentCol, '\u0020');
-			//System.out.println(player.getCol());
+
 			model.set(row, col, '5');
 			return true;
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0031')){
 			model.getMaze()[row][col].setNodeType('0');
-			//model.set(currentRow, currentCol, '0');
 			return false;
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0032')){
 			model.getMaze()[row][col].setNodeType('0');
-			//model.set(currentRow, currentCol, '0');
 			return false;
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0033')){
 			model.getMaze()[row][col].setNodeType('0');
-			//model.set(currentRow, currentCol, '0');
 			return false;
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0034')){
@@ -104,7 +101,7 @@ public class GameRunner implements KeyListener{
 			return false;
 		}
 		else{
-			return false; //Can't move
+			return false;
 		}
 	}
 	
