@@ -4,12 +4,13 @@ public class PlayerNode {
 	
 	private int row;
 	private int col;
-	private double health = 300;
-	private double swordPower = 0;
+	private double health = 200;
 	private int hydrogenBomb = 0;
 	private int bombs = 0;
 	private int sword = 0;
-
+	private double swordPower = 5;
+	private double bombPower = 10;
+	private double hydrogenBombPower = 20;
 	
 	
 	public int getRow() {
@@ -74,6 +75,29 @@ public class PlayerNode {
 		this.sword++;
 	}
 
+	public double getswordPower() {
+		return swordPower;
+	}
+
+	public void setswordPower(double swordPower) {
+		this.swordPower = swordPower;
+	}
+
+	public double getBombPower() {
+		return bombPower;
+	}
+
+	public void setBombPower(double bombPower) {
+		this.bombPower = bombPower;
+	}
+
+	public double getHydrogenBombPower() {
+		return hydrogenBombPower;
+	}
+
+	public void setHydrogenBombPower(double hydrogenBombPower) {
+		this.hydrogenBombPower = hydrogenBombPower;
+	}
 
 
 

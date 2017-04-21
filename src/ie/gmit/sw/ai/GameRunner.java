@@ -30,7 +30,7 @@ public class GameRunner implements KeyListener{
     	view = new GameView(model);
     	
     	placePlayer();
-    	
+    	///placeGoalNode();
     	Sprite[] sprites = getSprites();
     	view.setSprites(sprites);
     	
@@ -92,11 +92,12 @@ public class GameRunner implements KeyListener{
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0031')){
 			model.getMaze()[row][col].setNodeType('0');
 			p1.addSword();
-			p1.setSwordPower(20);
+			p1.setSwordPower(10);
 			return false;
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0032')){
 			model.getMaze()[row][col].setNodeType('0');
+			p1.setHealth(p1.getHealth()+25);
 			return false;
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0033')){

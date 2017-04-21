@@ -8,7 +8,7 @@ import ie.gmit.sw.ai.traversers.AStarTraversator;
 import ie.gmit.sw.ai.traversers.DepthLimitedDFSTraversator;
 
 public class SpiderSprite extends Sprite implements Runnable{
-	private PlayerNode player;
+	private PlayerNode p1;
 	private Node[][] maze;
 	private int row;
 	private int col;
@@ -20,9 +20,9 @@ public class SpiderSprite extends Sprite implements Runnable{
 		
 	}
 	
-	public SpiderSprite(Node[][] maze, PlayerNode player, int row, int col, double strength, int id){
+	public SpiderSprite(Node[][] maze, PlayerNode p1, int row, int col, double strength, int id){
 		super();
-		this.player = player;
+		this.p1 = p1;
 		this.maze = maze;
 		this.row = row;
 		this.col = col;
@@ -34,7 +34,7 @@ public class SpiderSprite extends Sprite implements Runnable{
 	public void run() {
 		
 		System.out.println("Sprite is moving");
-		DepthLimitedDFSTraversator dt = new DepthLimitedDFSTraversator(10, this, player);		
+		DepthLimitedDFSTraversator dt = new DepthLimitedDFSTraversator(10, this, p1);		
 		dt.traverse(maze, maze[row][col]);
 
 	}
@@ -54,7 +54,7 @@ public class SpiderSprite extends Sprite implements Runnable{
 	
 	public void engageFuzzy(){
 		FuzzyEngageable ef = new FuzzyEngageable();
-		player.setHealth(ef.fight(player.getSwordPower(), player.getHealth(), this.strength));
+		p1.setHealth(ef.fight(p1.getSwordPower(), p1.getHealth(), this.strength));
 		
 	}
 
