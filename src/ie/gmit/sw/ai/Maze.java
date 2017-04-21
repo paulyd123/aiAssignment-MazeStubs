@@ -90,4 +90,9 @@ public class Maze {
 		}
 		return sb.toString();
 	}
+
+	public char getNodeType() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

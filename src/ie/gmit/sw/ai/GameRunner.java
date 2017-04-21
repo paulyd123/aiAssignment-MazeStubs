@@ -13,6 +13,9 @@ public class GameRunner implements KeyListener{
 	private Player p1;
 	
 	public GameRunner() throws Exception{
+		currentRow = (int) (MAZE_DIMENSION * Math.random());
+    	currentCol = (int) (MAZE_DIMENSION * Math.random());
+		p1 = new Player(currentRow, currentCol);
 		model = new Maze(MAZE_DIMENSION, p1);
     	view = new GameView(model);
     	
@@ -40,8 +43,8 @@ public class GameRunner implements KeyListener{
 	}
 	
 	private void placePlayer(){   	
-    	currentRow = (int) (MAZE_DIMENSION * Math.random());
-    	currentCol = (int) (MAZE_DIMENSION * Math.random());
+    	//currentRow = (int) (MAZE_DIMENSION * Math.random());
+    	//currentCol = (int) (MAZE_DIMENSION * Math.random());
     	model.set(currentRow, currentCol, '5'); //A Spartan warrior is at index 5
     	updateView(); 		
 	}
@@ -73,12 +76,36 @@ public class GameRunner implements KeyListener{
 
     
 	private boolean isValidMove(int row, int col){
-		if (row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col) == ' '){
+		if (row <= model.size() - 1 && col <= model.size() - 1 && model.getNodeType() == '\u0020'){
 			model.set(currentRow, currentCol, '\u0020');
 			model.set(row, col, '5');
 			return true;
-		}else{
-			return false; //Can't move
+		}
+		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0034')){
+			model.getMaze()[row][col].setNodeType('0');
+			p1.addHydrogenBombs();
+			return false;
+		}
+		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0031')){
+			model.getMaze()[row][col].setNodeType('0');
+			p1.addSword();
+			p1.setSwordStrength(20);
+			return false;
+		}
+		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0033')){
+			model.getMaze()[row][col].setNodeType('0');
+			p1.addBombs();
+			return false;
+		}
+		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0031')){
+			model.getMaze()[row][col].setNodeType('0');
+			p1.addSword();
+			p1.setSwordStrength(20);
+			return false;
+		}
+		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0032')){
+			model.getMaze()[row][col].setNodeType('0');
+			return false;
 		}
 	}
 	
