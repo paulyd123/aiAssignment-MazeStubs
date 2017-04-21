@@ -10,10 +10,12 @@ public class GameRunner implements KeyListener{
 	private Maze model;
 	private int currentRow;
 	private int currentCol;
+	private Player p1;
 	
 	public GameRunner() throws Exception{
-		model = new Maze(MAZE_DIMENSION);
+		model = new Maze(MAZE_DIMENSION, p1);
     	view = new GameView(model);
+    	
     	
     	Sprite[] sprites = getSprites();
     	
