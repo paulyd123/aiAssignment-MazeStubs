@@ -16,6 +16,7 @@ public class GameRunner implements KeyListener{
     	view = new GameView(model);
     	
     	Sprite[] sprites = getSprites();
+    	
     	view.setSprites(sprites);
     	
     	placePlayer();
