@@ -85,6 +85,8 @@ public class GameRunner implements KeyListener{
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0031')){
 			model.getMaze()[row][col].setNodeType('0');
+			p1.addSword();
+			p1.setswordPower(10);
 			return false;
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0032')){
@@ -93,6 +95,7 @@ public class GameRunner implements KeyListener{
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0033')){
 			model.getMaze()[row][col].setNodeType('0');
+			p1.addBombs();
 			return false;
 		}
 		else if((row <= model.size() - 1 && col <= model.size() - 1 && model.get(row, col).getNodeType() == '\u0034')){
