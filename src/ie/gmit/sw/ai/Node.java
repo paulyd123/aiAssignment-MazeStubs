@@ -111,7 +111,6 @@ public class Node {
 	}
 
 	public void setVisited(boolean visited) {
-		//this.color = Color.BLUE;
 		this.color = Color.BLUE;
 		this.visited = visited;
 	}
